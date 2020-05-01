@@ -56,9 +56,10 @@ if __name__ == "__main__":
     all_subs = []
     for sid, subj in subjects.items():
         all_subs.append({"id": sid, "name": subj.name})
+        subj.courses.sort(key=lambda x: x.cid)
         with open('public/data/{}.json'.format(sid), 'w') as f:
             json.dump(subj, f, cls=MyEncoder)
     
     with open('public/data/subjects.json', 'w') as f:
-        json.dump(all_subs, f)
+        json.dump(sorted(all_subs, key=lambda x: x['id']), f)
 
