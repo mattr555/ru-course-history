@@ -1,26 +1,89 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react"
+import Select, { ValueType } from "react-select"
+import CourseListing from "./CourseListing"
+import "./App.css"
+import ReactTooltip from "react-tooltip"
+import Modal from "./Modal"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface Subject {
+  id: string
+  name: string
 }
 
-export default App;
+interface Option {
+  value: string
+  label: string
+}
+
+function App() {
+  const [subjects, setSubjects] = useState<Subject[]>([])
+  const [selected, setSelected] = useState<ValueType<Option>>(undefined)
+  const [winterSummer, setWinterSummer] = useState(false)
+  const [grad, setGrad] = useState(false)
+  const [modal, setModal] = useState(true)
+
+  useEffect(() => {
+    fetch("/data/subjects.json")
+      .then((resp) => resp.json())
+      .then((subjects) => setSubjects(subjects))
+  }, [])
+
+  const options = subjects.map((i) => ({
+    value: i.id,
+    label: `${i.name} (${i.id})`,
+  }))
+
+  let terms: string[] = []
+  for (var year = 2015; year < 2021; year++) {
+    let semesters = ["1", "9"]
+    if (winterSummer) {
+      semesters = ["0", "1", "7", "9"]
+    }
+    if (year === 2015) {
+      semesters = winterSummer ? ["7", "9"] : ["9"]
+    }
+    terms = terms.concat(semesters.map((i) => `${i}${year}`))
+  }
+
+  return (
+    <div className="App">
+      <div className="topBar">
+        <div className="search">
+          <Select
+            value={selected}
+            onChange={(val) => setSelected(val)}
+            options={options}
+          />
+        </div>
+        <div className="options">
+          <input
+            type="checkbox"
+            checked={winterSummer}
+            onChange={() => setWinterSummer(!winterSummer)}
+          />{" "}
+          Show Winter/Summer
+          <input
+            type="checkbox"
+            checked={grad}
+            onChange={() => setGrad(!grad)}
+          />{" "}
+          Show Graduate
+        </div>
+      </div>
+      <div className="spacer"></div>
+      <div className="results">
+        {(selected && (
+          <CourseListing
+            subjectId={(selected as Option).value}
+            terms={terms}
+            showGrad={grad}
+          />
+        )) || <div>Select a subject!</div>}
+      </div>
+      <ReactTooltip effect="solid" html={true} />
+      {modal && <Modal onDismiss={() => setModal(!modal)} />}
+    </div>
+  )
+}
+
+export default App
