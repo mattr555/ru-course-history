@@ -20,13 +20,19 @@ function App() {
   const [selected, setSelected] = useState<ValueType<Option>>(undefined)
   const [winterSummer, setWinterSummer] = useState(false)
   const [grad, setGrad] = useState(false)
-  const [modal, setModal] = useState(true)
+  const [modal, setModal] = useState(
+    () => (window.localStorage.getItem("disclaimed") || "false") === "false"
+  )
 
   useEffect(() => {
-    fetch("/data/subjects.json")
+    fetch(process.env.PUBLIC_URL + "/data/subjects.json")
       .then((resp) => resp.json())
       .then((subjects) => setSubjects(subjects))
   }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem("disclaimed", String(!modal))
+  }, [modal])
 
   const options = subjects.map((i) => ({
     value: i.id,
@@ -68,6 +74,9 @@ function App() {
             onChange={() => setGrad(!grad)}
           />{" "}
           Show Graduate
+          <button style={{ marginLeft: 5 }} onClick={() => setModal(!modal)}>
+            Disclaimer
+          </button>
         </div>
       </div>
       <div className="spacer"></div>

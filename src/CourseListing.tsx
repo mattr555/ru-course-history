@@ -18,7 +18,7 @@ function CourseListing({ subjectId, terms, showGrad }: Props) {
   const [subject, setSubject] = useState<Subject | null>(null)
 
   useEffect(() => {
-    fetch(`/data/${subjectId}.json`)
+    fetch(process.env.PUBLIC_URL + `/data/${subjectId}.json`)
       .then((resp) => resp.json())
       .then((subject) => setSubject(subject))
   }, [subjectId])

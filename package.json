@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-select": "^3.0.12",
     "d3-scale": "^3.2.1",
+    "gh-pages": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -21,11 +22,14 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://mattr555.me/ru-course-history",
   "eslintConfig": {
     "extends": "react-app"
   },
