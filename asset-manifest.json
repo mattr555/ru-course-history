@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ru-course-history/static/css/main.a0d0855c.chunk.css",
-    "main.js": "/ru-course-history/static/js/main.7d5c0786.chunk.js",
-    "main.js.map": "/ru-course-history/static/js/main.7d5c0786.chunk.js.map",
+    "main.js": "/ru-course-history/static/js/main.904de2ec.chunk.js",
+    "main.js.map": "/ru-course-history/static/js/main.904de2ec.chunk.js.map",
     "runtime-main.js": "/ru-course-history/static/js/runtime-main.ed789007.js",
     "runtime-main.js.map": "/ru-course-history/static/js/runtime-main.ed789007.js.map",
     "static/js/2.7532813d.chunk.js": "/ru-course-history/static/js/2.7532813d.chunk.js",
     "static/js/2.7532813d.chunk.js.map": "/ru-course-history/static/js/2.7532813d.chunk.js.map",
     "index.html": "/ru-course-history/index.html",
-    "precache-manifest.a9d75b438d709f8f639352c6cb69c00f.js": "/ru-course-history/precache-manifest.a9d75b438d709f8f639352c6cb69c00f.js",
+    "precache-manifest.46ac6779082e31a1cc75e4bd41942300.js": "/ru-course-history/precache-manifest.46ac6779082e31a1cc75e4bd41942300.js",
     "service-worker.js": "/ru-course-history/service-worker.js",
     "static/css/main.a0d0855c.chunk.css.map": "/ru-course-history/static/css/main.a0d0855c.chunk.css.map",
     "static/js/2.7532813d.chunk.js.LICENSE.txt": "/ru-course-history/static/js/2.7532813d.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ed789007.js",
     "static/js/2.7532813d.chunk.js",
     "static/css/main.a0d0855c.chunk.css",
-    "static/js/main.7d5c0786.chunk.js"
+    "static/js/main.904de2ec.chunk.js"
   ]
 }
