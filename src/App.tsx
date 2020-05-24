@@ -62,18 +62,22 @@ function App() {
           />
         </div>
         <div className="options">
-          <input
-            type="checkbox"
-            checked={winterSummer}
-            onChange={() => setWinterSummer(!winterSummer)}
-          />{" "}
-          Show Winter/Summer
-          <input
-            type="checkbox"
-            checked={grad}
-            onChange={() => setGrad(!grad)}
-          />{" "}
-          Show Graduate
+          <label>
+            <input
+              type="checkbox"
+              checked={winterSummer}
+              onChange={() => setWinterSummer(!winterSummer)}
+            />{" "}
+            Show Winter/Summer
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={grad}
+              onChange={() => setGrad(!grad)}
+            />{" "}
+            Show Graduate
+          </label>
           <button style={{ marginLeft: 5 }} onClick={() => setModal(!modal)}>
             Disclaimer
           </button>
