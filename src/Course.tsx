@@ -21,7 +21,12 @@ const termNumbers: any = {
 
 function Course({ terms, course }: Props) {
   const max = Math.max(...terms.map((t) => (course.terms[t] as number) || 0))
-  const scale = scaleLinear<string>().domain([0, max]).range(["white", "green"])
+  var scale: (n: number) => string
+  if (max === 1) {
+    scale = (n: number) => "green"
+  } else {
+    scale = scaleLinear<string>().domain([1, max]).range(["#bfdfbf", "green"])
+  }
 
   const termBars = terms.map((t) => {
     let color = "white"
