@@ -4,19 +4,19 @@ import json
 
 DIFFERENT_COURSE = -1
 FIRST_TERM = (2015, 7)
-LAST_TERM = (2020, 9)
+LAST_TERM = (2021, 1)
 
 def gen_terms():
     y, t = FIRST_TERM
     while (y, t) <= LAST_TERM:
         yield (y, t)
-        if t == 0:
+        if t == 0: # winter
             t = 1
-        elif t == 1:
+        elif t == 1: # spring
             t = 7
-        elif t == 7:
+        elif t == 7: # summer
             t = 9
-        elif t == 9:
+        elif t == 9: # fall
             t = 0
             y += 1
 
